@@ -1,3 +1,6 @@
+using Lil.TimeTracking.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<TimeTrackingDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("TrackingDbContext"))
+); 
+/*
+registered DbContext service with connection string
+so that this db context can be used in various controller
+by using dependency injection
+*/
 
 var app = builder.Build();
 
