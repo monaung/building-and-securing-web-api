@@ -19,6 +19,11 @@ namespace Lil.TimeTracking.Models
             when you actually access that property for the first time. 
             Without virtual members, EF would have to eagerly load all related data, 
             which could lead to unnecessary database queries and performance hits.
+
+              
+            If you only need to loop through the items, go with IEnumerable. 
+            If you need more control,e.g Add, Removing, Count, go with ICollection
+        
         */
     }
 }

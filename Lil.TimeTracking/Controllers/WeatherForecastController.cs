@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lil.TimeTracking.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[Authorize(AuthenticationSchemes = "APIKEY")] //<= says, must autheticated with this shceme
 public class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries = new[]

@@ -1,3 +1,4 @@
+using Lil.TimeTracking.Auth;
 using Lil.TimeTracking.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,11 +13,15 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<TimeTrackingDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("TrackingDbContext"))
 ); 
+
 /*
 registered DbContext service with connection string
 so that this db context can be used in various controller
 by using dependency injection
 */
+
+builder.Services.AddAuthentication().AddScheme<APIKeyOptions, APIKeyAuthHandler>("APIKEY",
+o => o.DisplayMessage ="API Key Authenticator");
 
 var app = builder.Build();
 

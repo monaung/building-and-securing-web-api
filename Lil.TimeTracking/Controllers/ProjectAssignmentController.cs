@@ -22,6 +22,10 @@ namespace Lil.TimeTracking.Controllers
         // GET: api/<ProjectAssignmentController>
         [HttpGet]
         [ProducesResponseType<IEnumerable<Resources.ProjectAssignment>>(StatusCodes.Status200OK)]
+        /*
+        If you only need to loop through the items, go with IEnumerable. 
+        If you need more control,e.g Add, Removing, Count, go with ICollection
+        */
         public async IAsyncEnumerable<Resources.ProjectAssignment> Get()
         {
             //TODO: add logic and parameters for paging
